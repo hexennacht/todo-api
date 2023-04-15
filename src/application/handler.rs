@@ -4,7 +4,7 @@ use tide::prelude::*;
 
 use super::request::GetTodoListRequest;
 
-pub async fn list_todos(
+pub async fn list_todo(
     req: tide::Request<ApiState<sqlx::PgPool>>,
 ) -> tide::Result<tide::Response> {
     let _ = req.state();

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FILE_NAME=$1
+
+touch "./migrations/"$(date +%s)"_"$FILE_NAME.sql

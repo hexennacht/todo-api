@@ -22,12 +22,16 @@ pub async fn start() -> tide::Result<()> {
         config: conf.clone(),
     };
 
+    sqlx::migrate!("./migrations").run(&db_connection).await?;
+
     let mut api = tide::new();
 
     api.at("/api/v1").nest( {
         let v1 = route::api_v1(state.clone()).await;
         v1
     });
+
+    api.listen(&conf.base_url).await?;
     
     Ok(())
 }

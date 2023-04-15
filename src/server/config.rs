@@ -1,13 +1,13 @@
 use dotenv::dotenv;
 use serde::Deserialize;
 
-#[derive(Deserialize, Debug)]
+#[derive(Default, Deserialize, Debug, Clone)]
 pub struct Config {
     pub database_url: String,
 }
 
 impl Config {
-    pub fn read_env(&self) -> anyhow::Result<Config> {
+    pub fn read_env() -> anyhow::Result<Config> {
         dotenv().expect(".env file not found");
 
         let conf =  match envy::from_env::<Config>() {

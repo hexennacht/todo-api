@@ -1,7 +1,7 @@
-use sqlx::{Pool, Postgres, postgres};
+use sqlx::{Pool, PgPool};
 
-pub async fn connect_to_postgres(database_url: String) -> Pool<Postgres> {
-    let connection = postgres::PgPool::connect(&database_url).await;
+pub async fn connect_to_postgres(database_url: String) -> PgPool {
+    let connection = Pool::connect(&database_url).await;
 
     connection.expect("cannot connect to database")
 }

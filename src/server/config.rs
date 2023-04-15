@@ -3,13 +3,13 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
 pub struct Config {
-
+    pub database_url: String,
 }
 
 impl Config {
     pub fn read_env(&self) -> anyhow::Result<Config> {
         dotenv().expect(".env file not found");
-        
+
         let conf =  match envy::from_env::<Config>() {
             Ok(conf) => Ok(conf),
             Err(err) => Err(err),

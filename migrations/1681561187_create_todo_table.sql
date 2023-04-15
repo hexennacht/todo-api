@@ -1,4 +1,4 @@
-create table if not exists todo (
+create table if not exists todos (
     id bigserial primary key,
     name varchar(255) not null,
     description text not null default '',

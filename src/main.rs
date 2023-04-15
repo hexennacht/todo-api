@@ -1,7 +1,8 @@
 pub mod application;
+pub mod client;
 pub mod domain;
 pub mod infrastructure;
-pub mod route;
+pub mod server;
 
 #[async_std::main]
 async fn main() -> tide::Result<()> {
